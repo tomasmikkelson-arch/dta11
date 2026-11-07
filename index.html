@@ -18,7 +18,7 @@
   --bg:#F6F8FA; --card:#FFFFFF; --raised:#EEF2F6; --line:rgba(31,42,51,.10); --line-strong:rgba(31,42,51,.16);
   --fg:#1F2A33; --fg2:#4B5763; --muted:#6B7783;
   --brand:#7AB8E4; --brand-deep:#5692BD; --ink:#245A7C;
-  --wine:#8E3050; --sky:#7AB8E4; --sage:#8FB375; --sun:#FFCF47; --slate:#2C3840; --sand:#D9CFAE; --cream:#F4EDD5;
+  --wine:#8E3050; --sky:#7AB8E4; --sage:#8FB375; --sun:#FFCF47; --slate:#2C3840; --sand:#D9CFAE; --sage-deep:#6E9455; --cream:#F4EDD5;
   --font-display:"e-Ukraine Head","Geologica",system-ui,sans-serif;
   --font-body:"Geologica",system-ui,-apple-system,"Segoe UI",sans-serif;
   --gut:clamp(16px,calc((100vw - 1240px) / 2),400px);
@@ -68,62 +68,76 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;min-width:0}
 .card h2{font-family:var(--font-display);font-weight:700;font-size:19px;margin:0;line-height:1.25}
 .card .hint{font-size:13.5px;color:var(--muted);margin:4px 0 0}
-.row1{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr);gap:20px}
-.big{font-family:var(--font-display);font-weight:700;font-size:clamp(56px,7vw,84px);line-height:.95;letter-spacing:-.02em;color:var(--fg);margin:14px 0 6px}
-.label{font-size:14px;color:var(--fg2)}
-.stack{display:flex;height:12px;border-radius:6px;overflow:hidden;gap:3px;margin:22px 0 14px}
+.card-top{display:flex;align-items:center;gap:14px}
+.tile{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#FFFFFF)}
+.tile svg.i{width:22px;height:22px}
+.row1{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px}
+.hero{padding:28px}
+.big{font-family:var(--font-display);font-weight:700;font-size:clamp(88px,11vw,150px);line-height:.9;letter-spacing:-.03em;color:var(--fg);margin:22px 0 8px}
+.label{font-size:15px;color:var(--fg2)}
+.stack{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:3px;margin:24px 0 16px}
 .stack i{display:block;height:100%}
-.kv{display:grid;gap:10px}
-.kv-row{display:grid;grid-template-columns:12px minmax(0,1fr) auto auto;gap:10px;align-items:center;font-size:14px}
-.kv-row .sw{width:10px;height:10px;border-radius:3px}
-.kv-row b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-.kv-row .pct{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;min-width:46px;text-align:right}
-.gender{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.gender .g-n{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
-.gender .g-l{font-size:13.5px;color:var(--fg2);margin-top:6px}
-.gender .g-l span{color:var(--muted)}
-.types{display:grid;gap:12px;margin-top:16px}
-.type .t-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
-.type .t-top b{font-weight:600;font-variant-numeric:tabular-nums}
-.type .track{height:6px;border-radius:4px;background:var(--raised);margin-top:6px;overflow:hidden}
-.type .track i{display:block;height:100%;background:var(--brand-deep);border-radius:4px}
-
-/* who called */
-.who{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
-.who-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
-.who-head .note{font-size:13px;color:var(--muted);max-width:46ch;margin:0}
-.waffle{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:3px}
-.waffle i{display:block;aspect-ratio:1;border-radius:2px;transition:opacity .2s var(--ease)}
-.waffle.dim i{opacity:.12}
-.waffle.dim i.hl{opacity:1}
-.scale{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13px;color:var(--muted)}
-.scale i{width:12px;height:12px;border-radius:2px;background:var(--slate)}
-.legend{display:grid;gap:4px}
-.lg{border:1px solid transparent;border-radius:12px;background:transparent;text-align:left;cursor:pointer;padding:10px 12px;transition:background-color .15s var(--ease),border-color .15s var(--ease)}
-.lg:hover,.lg[aria-expanded="true"]{background:var(--bg);border-color:var(--line)}
-.lg-top{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:center}
-.lg-top .sw{width:14px;height:14px;border-radius:4px}
-.lg-top span{font-size:14px;line-height:1.3}
-.lg-top b{font-family:var(--font-display);font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
-.lg-pct{font-size:12.5px;color:var(--muted);padding-left:24px;margin-top:2px;font-variant-numeric:tabular-nums}
-.lg-det{display:grid;gap:6px;margin:10px 0 2px 24px;padding-top:10px;border-top:1px solid var(--line)}
-.lg-det div{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--fg2)}
-.lg-det b{font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pm{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:12px;background:var(--bg)}
+.mini{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex:none;color:var(--c);background:color-mix(in srgb,var(--c) 14%,#FFFFFF)}
+.pm-n{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.pm-l{font-size:13.5px;color:var(--fg2);margin-top:4px}
+.gender{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+.gd{padding:18px;border-radius:14px;background:var(--bg);display:grid;gap:2px;justify-items:start}
+.gi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#FFFFFF;background:var(--c);margin-bottom:12px}
+.gi svg.i{width:28px;height:28px}
+.g-n{font-family:var(--font-display);font-weight:700;font-size:clamp(42px,4.8vw,60px);line-height:1;font-variant-numeric:tabular-nums}
+.g-l{font-size:14.5px;color:var(--fg2);margin-top:6px}
+.g-p{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.types{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:6px;align-content:start;min-width:0}
+.tcard .tile{margin-bottom:12px}
+.t-n{font-family:var(--font-display);font-weight:700;font-size:clamp(36px,3.8vw,48px);line-height:1;font-variant-numeric:tabular-nums}
+.t-l{font-size:14.5px;line-height:1.35}
+.t-p{font-size:13px;color:var(--muted)}
+.who-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:24px}
+.who-head .note{font-size:13px;color:var(--muted);max-width:44ch;margin:0}
+.seg{display:flex;gap:4px;height:76px;border-radius:14px;overflow:hidden}
+.seg button{border:0;padding:0 16px;display:flex;align-items:center;gap:10px;cursor:pointer;min-width:0;overflow:hidden;white-space:nowrap;color:var(--fgc);background:var(--c);font-family:var(--font-display);font-weight:700;font-size:24px;transition:opacity .2s var(--ease)}
+.seg button svg.i{width:26px;height:26px}
+.seg button.narrow{padding:0;justify-content:center;font-size:0}
+.seg button.narrow svg.i{width:20px;height:20px}
+.seg.dim button:not(.on){opacity:.3}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;align-items:start}
+.gp{text-align:left;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:18px;cursor:pointer;display:grid;gap:12px;align-content:start;transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.gp:hover,.gp[aria-expanded="true"]{border-color:var(--line-strong);background:var(--bg)}
+.gp-top{display:flex;gap:12px;align-items:center}
+.gp .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;color:var(--fgc);background:var(--c)}
+.gp .ic svg.i{width:22px;height:22px}
+.gp-name{font-size:14.5px;line-height:1.3;font-weight:500}
+.gp-nums{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.gp-n{font-family:var(--font-display);font-weight:700;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.gp-p{font-size:14px;color:var(--fg2);font-variant-numeric:tabular-nums}
+.gp-bar{height:6px;border-radius:3px;background:var(--raised);overflow:hidden}
+.gp-bar i{display:block;height:100%;background:var(--c)}
+.gp-det{display:grid;gap:6px;padding-top:12px;border-top:1px solid var(--line)}
+.gp-det div{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--fg2)}
+.gp-det b{font-weight:500;color:var(--fg);font-variant-numeric:tabular-nums}
+.gp-more{font-size:12.5px;color:var(--ink);display:flex;align-items:center;gap:4px}
+.gp-more svg.i{width:14px;height:14px;transition:transform .2s var(--ease)}
+.gp[aria-expanded="true"] .gp-more svg.i{transform:rotate(90deg)}
 
 /* topics */
 .row3{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
 .topics{display:grid;gap:2px;margin-top:18px}
-.tp{display:grid;grid-template-columns:28px minmax(0,1fr) 56px 18px;gap:12px;align-items:center;width:100%;padding:10px 8px;border:0;border-radius:10px;background:transparent;cursor:pointer;text-align:left;transition:background-color .15s var(--ease)}
+.tp{display:grid;grid-template-columns:22px 40px minmax(0,1fr) 60px 18px;gap:12px;align-items:center;width:100%;padding:10px 8px;border:0;border-radius:10px;background:transparent;cursor:pointer;text-align:left;transition:background-color .15s var(--ease)}
 .tp:hover,.tp[aria-expanded="true"]{background:var(--bg)}
 .tp .rk{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
 .tp .nm{font-size:14.5px;display:grid;gap:6px;min-width:0}
 .tp .nm .track{height:8px;border-radius:4px;background:var(--raised);overflow:hidden}
 .tp .nm .track i{display:block;height:100%;background:var(--sky);border-radius:4px}
 .tp:first-child .nm .track i{background:var(--brand-deep)}
-.tp .n{font-family:var(--font-display);font-weight:700;font-size:16px;text-align:right;font-variant-numeric:tabular-nums}
+.tp .ti{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:var(--ink);background:var(--raised)}
+.tp:first-child .ti{background:var(--brand-deep);color:#FFFFFF}
+.tp .n{font-family:var(--font-display);font-weight:700;font-size:21px;text-align:right;font-variant-numeric:tabular-nums}
 .tp .chev{color:var(--muted);transition:transform .2s var(--ease)}
 .tp[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.tp-det{display:grid;gap:8px;padding:6px 8px 14px 48px}
+.tp-det{display:grid;gap:8px;padding:6px 8px 14px 94px}
 .sd{display:grid;grid-template-columns:minmax(0,1fr) 40px;gap:12px;align-items:center;font-size:13.5px;color:var(--fg2)}
 .sd .track{height:4px;border-radius:2px;background:var(--raised);margin-top:4px;overflow:hidden}
 .sd .track i{display:block;height:100%;background:var(--sky);opacity:.7}
@@ -132,11 +146,11 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 .more:hover{background:var(--bg)}
 
 .qs{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:0;counter-reset:q}
-.qs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.qs li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 12px;padding:12px 0;border-top:1px solid var(--line)}
 .qs li:first-child{border-top:0}
 .qs .q{font-size:14.5px;line-height:1.4}
 .qs .c{font-size:12.5px;color:var(--muted);grid-column:1}
-.qs b{grid-row:1 / span 2;grid-column:2;align-self:center;font-family:var(--font-display);font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;color:var(--wine)}
+.qs b{grid-row:1 / span 2;grid-column:2;align-self:center;font-family:var(--font-display);font-weight:700;font-size:28px;font-variant-numeric:tabular-nums;color:var(--wine)}
 
 .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;font-size:13.5px;color:var(--fg2)}
 .notes h3{font-size:14px;font-weight:600;margin:0 0 6px;color:var(--fg)}
@@ -148,10 +162,9 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:90;background:var(--slate);color:#FFFFFF;padding:12px 18px;border-radius:12px;font-size:14px;max-width:min(92vw,520px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
 
 @media (max-width:1100px){
-  .row1{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .row1 .hero{grid-column:1 / -1}
-  .who{grid-template-columns:minmax(0,1fr)}
-  .legend{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row1{grid-template-columns:minmax(0,1fr)}
+  .types{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .groups{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:860px){
   .head{grid-template-columns:minmax(0,1fr)}
@@ -162,11 +175,16 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 @media (max-width:640px){
   .brand-sep,.brand-name{display:none}
   .hot .lbl{display:none}
-  .row1{grid-template-columns:minmax(0,1fr)}
-  .legend{grid-template-columns:minmax(0,1fr)}
+  .groups{grid-template-columns:minmax(0,1fr)}
+  .types{gap:12px}
+  .tcard{padding:16px}
+  .seg{height:56px}
+  .seg button{font-size:18px;padding:0 10px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .tp{grid-template-columns:18px 36px minmax(0,1fr) 48px 16px;gap:10px}
+  .tp-det{padding-left:16px}
   .card{padding:18px}
   .months{grid-template-columns:repeat(12,52px)}
-  .waffle{gap:2px}
 }
 </style>
 </head>
@@ -195,47 +213,39 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 
   <section class="row1">
     <div class="card hero">
-      <h2>Звернення за місяць</h2>
+      <div class="card-top"><span class="tile" style="--c:var(--brand-deep)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><h2>Звернення за жовтень</h2></div>
       <div class="big num" id="total">1 465</div>
-      <div class="label">консультацій надали юристи гарячої лінії</div>
+      <div class="label">консультацій надали юристи Юридичної сотні</div>
       <div class="stack" aria-hidden="true"><i style="flex:1223;background:var(--brand-deep)"></i><i style="flex:242;background:var(--sun)"></i></div>
-      <div class="kv">
-        <div class="kv-row"><span class="sw" style="background:var(--brand-deep)"></span><span>Консультації телефоном</span><b>1 223</b><span class="pct">83,5%</span></div>
-        <div class="kv-row"><span class="sw" style="background:var(--sun)"></span><span>Письмові консультації</span><b>242</b><span class="pct">16,5%</span></div>
+      <div class="pair">
+        <div class="pm"><span class="mini" style="--c:var(--brand-deep)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><div class="pm-n">1 223</div><div class="pm-l">телефоном · 83,5%</div></div></div>
+        <div class="pm"><span class="mini" style="--c:#B8860B"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><div><div class="pm-n">242</div><div class="pm-l">письмово · 16,5%</div></div></div>
       </div>
     </div>
     <div class="card">
-      <h2>Хто телефонував</h2>
-      <p class="hint">Розподіл за статтю</p>
-      <div class="stack" aria-hidden="true" style="margin-top:20px"><i style="flex:757;background:var(--slate)"></i><i style="flex:708;background:var(--wine)"></i></div>
+      <div class="card-top"><span class="tile" style="--c:var(--slate)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span><h2>Хто звертався за статтю</h2></div>
       <div class="gender">
-        <div><div class="g-n">757</div><div class="g-l">Чоловіки <span>51,7%</span></div></div>
-        <div><div class="g-n">708</div><div class="g-l">Жінки <span>48,3%</span></div></div>
+        <div class="gd"><span class="gi" style="--c:var(--slate)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2.5"/><path d="M9 21v-7H7.5V10a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4H15v7"/></svg></span><div class="g-n">757</div><div class="g-l">чоловіків</div><div class="g-p">51,7%</div></div>
+        <div class="gd"><span class="gi" style="--c:var(--wine)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2.5"/><path d="M10 21v-5H7l2.5-6.5A2 2 0 0 1 11.4 8h1.2a2 2 0 0 1 1.9 1.5L17 16h-3v5"/></svg></span><div class="g-n">708</div><div class="g-l">жінок</div><div class="g-p">48,3%</div></div>
       </div>
-    </div>
-    <div class="card">
-      <h2>Вид консультації</h2>
-      <div class="types">
-        <div class="type"><div class="t-top"><span>Роз’яснення</span><b>1 328</b></div><div class="track"><i style="width:90.6%"></i></div></div>
-        <div class="type"><div class="t-top"><span>Запит на вторинну правову допомогу</span><b>64</b></div><div class="track"><i style="width:4.4%"></i></div></div>
-        <div class="type"><div class="t-top"><span>Порушення прав</span><b>47</b></div><div class="track"><i style="width:3.2%"></i></div></div>
-        <div class="type"><div class="t-top"><span>Інше</span><b>26</b></div><div class="track"><i style="width:1.8%"></i></div></div>
-      </div>
+      <div class="stack" aria-hidden="true" style="margin:20px 0 0"><i style="flex:757;background:var(--slate)"></i><i style="flex:708;background:var(--wine)"></i></div>
     </div>
   </section>
 
-  <section class="card">
+  <section class="types">
+    <div class="tcard"><span class="tile" style="--c:var(--brand-deep)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></span><div class="t-n">1 328</div><div class="t-l">Роз’яснення</div><div class="t-p">90,6% звернень</div></div>
+    <div class="tcard"><span class="tile" style="--c:var(--sage-deep)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 20h14M6 8h12M6 8l-3 7h6zM18 8l-3 7h6z"/></svg></span><div class="t-n">64</div><div class="t-l">Запит на вторинну правову допомогу</div><div class="t-p">4,4%</div></div>
+    <div class="tcard"><span class="tile" style="--c:var(--wine)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="M12 9v4M12 16h.01"/></svg></span><div class="t-n">47</div><div class="t-l">Порушення прав</div><div class="t-p">3,2%</div></div>
+    <div class="tcard"><span class="tile" style="--c:var(--muted)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></span><div class="t-n">26</div><div class="t-l">Інше</div><div class="t-p">1,8%</div></div>
+  </section>
+
+  <section class="card who-card">
     <div class="who-head">
-      <div><h2>Хто звертався</h2><p class="hint">Статус людини, яка звернулася. Наведіть на групу, щоб побачити її частку</p></div>
-      <p class="note">Деяких людей позначено кількома статусами, тому позначок 1 500, а звернень 1 465.</p>
+      <div class="card-top"><span class="tile" style="--c:var(--ink)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 14h3"/></svg></span><div><h2>Хто звертався</h2><p class="hint">Статус людини, яка звернулася. Натисніть на групу, щоб побачити розбивку</p></div></div>
+      <p class="note">Деяких людей позначено кількома статусами, тому позначок 1 500, а звернень 1 465</p>
     </div>
-    <div class="who">
-      <div>
-        <div class="waffle" id="waffle" role="img" aria-label="Сітка з 1 500 клітинок, розфарбованих за статусом людини, яка звернулася"></div>
-        <div class="scale"><i aria-hidden="true"></i>одна клітинка — одна позначка статусу</div>
-      </div>
-      <div class="legend" id="legend"></div>
-    </div>
+    <div class="seg" id="seg" role="img" aria-label="Частки груп серед 1 500 позначок статусу"></div>
+    <div class="groups" id="groups"></div>
   </section>
 
   <section class="row3">
@@ -269,8 +279,8 @@ h1{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4.6vw,52
 const $=s=>document.querySelector(s);
 const fmt=n=>n.toLocaleString("uk-UA").replace(/ /g," ");
 const pct=(a,b)=>(a/b*100).toFixed(1).replace(".",",")+"%";
-const IC={lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',chev:'<path d="m9 6 6 6-6 6"/>',down:'<path d="m6 9 6 6 6-6"/>'};
-const ic=n=>'<svg class="i'+(n==="chev"?" chev":"")+'" viewBox="0 0 24 24" aria-hidden="true">'+IC[n]+'</svg>';
+const IC={"phone": "<path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/>", "pen": "<path d=\"M12 20h9\"/><path d=\"M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z\"/>", "users": "<circle cx=\"9\" cy=\"8\" r=\"3.5\"/><path d=\"M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6\"/>", "man": "<circle cx=\"12\" cy=\"4.5\" r=\"2.5\"/><path d=\"M9 21v-7H7.5V10a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4H15v7\"/>", "woman": "<circle cx=\"12\" cy=\"4.5\" r=\"2.5\"/><path d=\"M10 21v-5H7l2.5-6.5A2 2 0 0 1 11.4 8h1.2a2 2 0 0 1 1.9 1.5L17 16h-3v5\"/>", "chat": "<path d=\"M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z\"/><path d=\"M8.5 12h.01M12 12h.01M15.5 12h.01\"/>", "scale": "<path d=\"M12 4v16M5 20h14M6 8h12M6 8l-3 7h6zM18 8l-3 7h6z\"/>", "shield": "<path d=\"M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z\"/><path d=\"M12 9v4M12 16h.01\"/>", "army": "<path d=\"M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z\"/><path d=\"m9 12 2 2 4-4\"/>", "dots": "<circle cx=\"5\" cy=\"12\" r=\"1.3\"/><circle cx=\"12\" cy=\"12\" r=\"1.3\"/><circle cx=\"19\" cy=\"12\" r=\"1.3\"/>", "id": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><circle cx=\"9\" cy=\"11\" r=\"2\"/><path d=\"M6 16a3 3 0 0 1 6 0M14 10h4M14 14h3\"/>", "home": "<path d=\"M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z\"/>", "heart": "<path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z\"/>", "medal": "<circle cx=\"12\" cy=\"15\" r=\"5\"/><path d=\"M8.5 11 6 3h4l2 5 2-5h4l-2.5 8\"/>", "file": "<path d=\"M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/><path d=\"M14 3v5h5M9 13h6M9 17h6\"/>", "brief": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18\"/>", "steth": "<path d=\"M6 3v5a4 4 0 0 0 8 0V3\"/><path d=\"M10 12v3a5 5 0 0 0 10 0v-2\"/><circle cx=\"20\" cy=\"11\" r=\"2\"/>", "exit": "<path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9\"/>", "wallet": "<path d=\"M19 7V5a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-4a2 2 0 0 0 0 4h4v2a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V6\"/>", "alert": "<path d=\"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z\"/><path d=\"M12 9v4M12 17h.01\"/>", "search": "<circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"m20 20-4.2-4.2\"/>", "coins": "<circle cx=\"9\" cy=\"9\" r=\"6\"/><path d=\"M15.5 9.2A6 6 0 1 1 9.2 15.5M7.5 7h2v4\"/>", "pulse": "<path d=\"M3 12h4l2-6 4 12 2-6h6\"/>", "bank": "<path d=\"M3 21h18M5 21V10M19 21V10M9.5 21V10M14.5 21V10M2 10l10-6 10 6z\"/>", "lock": "<rect x=\"5\" y=\"11\" width=\"14\" height=\"9\" rx=\"2\"/><path d=\"M8 11V8a4 4 0 0 1 8 0v3\"/>", "chev": "<path d=\"m9 6 6 6-6 6\"/>", "down": "<path d=\"m6 9 6 6 6-6\"/>"};
+const ic=n=>'<svg class="i'+(n==="chev"?" chev":"")+'" viewBox="0 0 24 24" aria-hidden="true">'+(IC[n]||IC.file)+'</svg>';
 
 /* ---------- period ---------- */
 const MONTHS=["Січ","Лют","Бер","Кві","Тра","Чер","Лип","Сер","Вер","Жов","Лис","Гру"];
@@ -292,42 +302,36 @@ requestAnimationFrame(()=>{const w=document.querySelector(".months-wrap"),on=doc
 
 /* ---------- who called ---------- */
 const GROUPS=[
- {name:"Чинні військовослужбовці",color:"var(--slate)",items:[["Військовослужбовці чинні",564]]},
- {name:"Родини військовослужбовців",color:"var(--sky)",items:[["Член сім’ї військовослужбовця",330],["Член сім’ї військовозобов’язаного",31],["Член сім’ї пораненого військовослужбовця",1],["Член сім’ї призовника",1]]},
- {name:"Родини зниклих, загиблих і полонених",color:"var(--wine)",items:[["Член сім’ї зниклого безвісти",125],["Член сім’ї загиблого",121],["Член сім’ї померлого ветерана чи військовослужбовця",18],["Член сім’ї полоненого",6],["Члени сім’ї звільнених з полону",2]]},
- {name:"Ветерани, звільнені зі служби та їхні родини",color:"var(--sage)",items:[["Звільнені з військової служби",69],["Особа з інвалідністю внаслідок війни",35],["Учасники бойових дій",23],["Член сім’ї ветерана",21],["Звільнені з полону",8],["Іноземці: УБД",5],["Іноземці: особи з інвалідністю внаслідок війни",5],["Член сім’ї особи з інвалідністю внаслідок війни",4]]},
- {name:"Військовозобов’язані",color:"var(--sun)",items:[["Військовозобов’язані",39],["Виключені з обліку",8]]},
- {name:"Фахівці, установи та інші",color:"var(--sand)",items:[["Треті особи",31],["Фахівці з супроводу ветеранів",24],["Державні установи: інше",4],["Юристи",4],["Іноземці: інше",3],["Волонтери",3],["Громадські організації",3],["Органи місцевого самоврядування",3],["Військова частина (посадові особи)",2],["ЦНАП, ДСНС, члени ДФТГ",2],["Патронатні служби, служби супроводу",2],["Поліцейські: спецпідрозділи",2],["Особа з інвалідністю (цивільна)",1]]}
+ {name:"Чинні військовослужбовці",icon:"army",color:"var(--slate)",fg:"#FFFFFF",items:[["Військовослужбовці чинні",564]]},
+ {name:"Родини військовослужбовців",icon:"home",color:"var(--sky)",fg:"#14324A",items:[["Член сім’ї військовослужбовця",330],["Член сім’ї військовозобов’язаного",31],["Член сім’ї пораненого військовослужбовця",1],["Член сім’ї призовника",1]]},
+ {name:"Родини зниклих, загиблих і полонених",icon:"heart",color:"var(--wine)",fg:"#FFFFFF",items:[["Член сім’ї зниклого безвісти",125],["Член сім’ї загиблого",121],["Член сім’ї померлого ветерана чи військовослужбовця",18],["Член сім’ї полоненого",6],["Члени сім’ї звільнених з полону",2]]},
+ {name:"Ветерани, звільнені зі служби та їхні родини",icon:"medal",color:"var(--sage)",fg:"#1E3312",items:[["Звільнені з військової служби",69],["Особа з інвалідністю внаслідок війни",35],["Учасники бойових дій",23],["Член сім’ї ветерана",21],["Звільнені з полону",8],["Іноземці: УБД",5],["Іноземці: особи з інвалідністю внаслідок війни",5],["Член сім’ї особи з інвалідністю внаслідок війни",4]]},
+ {name:"Військовозобов’язані",icon:"id",color:"var(--sun)",fg:"#3D2E00",items:[["Військовозобов’язані",39],["Виключені з обліку",8]]},
+ {name:"Фахівці, установи та інші",icon:"brief",color:"var(--sand)",fg:"#3A3424",items:[["Треті особи",31],["Фахівці з супроводу ветеранів",24],["Державні установи: інше",4],["Юристи",4],["Іноземці: інше",3],["Волонтери",3],["Громадські організації",3],["Органи місцевого самоврядування",3],["Військова частина (посадові особи)",2],["ЦНАП, ДСНС, члени ДФТГ",2],["Патронатні служби, служби супроводу",2],["Поліцейські: спецпідрозділи",2],["Особа з інвалідністю (цивільна)",1]]}
 ];
 GROUPS.forEach(g=>g.n=g.items.reduce((a,b)=>a+b[1],0));
 const MARKS=GROUPS.reduce((a,g)=>a+g.n,0);
-let cells=[];
-function renderWaffle(){
-  const w=$("#waffle");const wide=w.clientWidth>=640;const cols=wide?60:30;
-  w.style.setProperty("--cols",cols);
-  if(!cells.length){let html="";GROUPS.forEach((g,gi)=>{for(let k=0;k<g.n;k++)html+='<i data-g="'+gi+'" style="background:'+g.color+'"></i>';});w.innerHTML=html;cells=[...w.children];}
+const vars=g=>'--c:'+g.color+';--fgc:'+g.fg;
+function renderWho(){
+  const segW=document.querySelector("#seg").clientWidth||1000;
+  $("#seg").innerHTML=GROUPS.map((g,i)=>{const w=g.n/MARKS*segW;const cls=w<110?"narrow":"";return '<button class="'+cls+'" data-g="'+i+'" style="flex:'+g.n+';'+vars(g)+'" aria-label="'+g.name+': '+fmt(g.n)+', '+pct(g.n,MARKS)+'">'+(w<34?'':ic(g.icon))+(cls?"":'<span>'+pct(g.n,MARKS)+'</span>')+'</button>';}).join("");
+  $("#groups").innerHTML=GROUPS.map((g,i)=>'<button class="gp" data-g="'+i+'" style="'+vars(g)+'" aria-expanded="false"><div class="gp-top"><span class="ic">'+ic(g.icon)+'</span><span class="gp-name">'+g.name+'</span></div><div class="gp-nums"><span class="gp-n">'+fmt(g.n)+'</span><span class="gp-p">'+pct(g.n,MARKS)+'</span></div><div class="gp-bar"><i style="width:'+(g.n/GROUPS[0].n*100).toFixed(1)+'%"></i></div>'+(g.items.length>1?'<span class="gp-more">'+ic("chev")+'Розбивка: '+g.items.length+' статуси</span><div class="gp-det" hidden>'+g.items.map(it=>'<div><span>'+it[0]+'</span><b>'+fmt(it[1])+'</b></div>').join("")+'</div>':'')+'</button>').join("");
 }
-function renderLegend(){
-  $("#legend").innerHTML=GROUPS.map((g,gi)=>'<button class="lg" data-g="'+gi+'" aria-expanded="false"><div class="lg-top"><span class="sw" style="background:'+g.color+'"></span><span>'+g.name+'</span><b>'+fmt(g.n)+'</b></div><div class="lg-pct">'+pct(g.n,MARKS)+' позначок</div><div class="lg-det" hidden>'+g.items.map(it=>'<div><span>'+it[0]+'</span><b>'+fmt(it[1])+'</b></div>').join("")+'</div></button>').join("");
-}
-function highlight(gi){const w=$("#waffle");if(gi===null){w.classList.remove("dim");cells.forEach(c=>c.classList.remove("hl"));return;}w.classList.add("dim");cells.forEach(c=>c.classList.toggle("hl",c.dataset.g===String(gi)));}
 let pinned=null;
-$("#legend").addEventListener("mouseover",e=>{const b=e.target.closest(".lg");if(b&&pinned===null)highlight(+b.dataset.g);});
-$("#legend").addEventListener("mouseleave",()=>{highlight(pinned);});
-$("#legend").addEventListener("click",e=>{
-  const b=e.target.closest(".lg");if(!b)return;const gi=+b.dataset.g;const open=b.getAttribute("aria-expanded")==="true";
-  document.querySelectorAll(".lg").forEach(x=>{x.setAttribute("aria-expanded","false");x.querySelector(".lg-det").hidden=true;});
-  if(!open){b.setAttribute("aria-expanded","true");b.querySelector(".lg-det").hidden=false;pinned=gi;}else pinned=null;
-  highlight(pinned);
-});
-const tip=$("#tip");
-$("#waffle").addEventListener("mousemove",e=>{const c=e.target.closest("i");if(!c){tip.hidden=true;return;}const g=GROUPS[+c.dataset.g];tip.textContent=g.name+" · "+fmt(g.n);tip.hidden=false;tip.style.left=Math.min(e.clientX+12,window.innerWidth-tip.offsetWidth-8)+"px";tip.style.top=(e.clientY+14)+"px";if(pinned===null)highlight(+c.dataset.g);});
-$("#waffle").addEventListener("mouseleave",()=>{tip.hidden=true;highlight(pinned);});
-renderWaffle();renderLegend();
-window.addEventListener("resize",renderWaffle);
+function hl(i){const seg=$("#seg");if(i===null){seg.classList.remove("dim");seg.querySelectorAll("button").forEach(b=>b.classList.remove("on"));return;}seg.classList.add("dim");seg.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.g===String(i)));}
+function openGroup(i){
+  document.querySelectorAll(".gp").forEach(x=>{const on=x.dataset.g===String(i)&&x.getAttribute("aria-expanded")!=="true";x.setAttribute("aria-expanded",String(on));const d=x.querySelector(".gp-det");if(d)d.hidden=!on;});
+  const open=document.querySelector('.gp[aria-expanded="true"]');pinned=open?+open.dataset.g:null;hl(pinned);
+}
+$("#groups").addEventListener("click",e=>{const b=e.target.closest(".gp");if(b)openGroup(+b.dataset.g);});
+$("#seg").addEventListener("click",e=>{const b=e.target.closest("button");if(b){openGroup(+b.dataset.g);document.querySelector('.gp[data-g="'+b.dataset.g+'"]').scrollIntoView({block:"nearest",behavior:"smooth"});}});
+[$("#groups"),$("#seg")].forEach(el=>{el.addEventListener("mouseover",e=>{const b=e.target.closest("[data-g]");if(b&&pinned===null)hl(+b.dataset.g);});el.addEventListener("mouseleave",()=>hl(pinned));});
+renderWho();
+let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{const p=pinned;renderWho();if(p!==null){pinned=null;openGroup(p);}},120);});
 
 /* ---------- topics ---------- */
 const SUB=[["Звільнення", "підстави", 80], ["Інше", "(без підкатегорії)", 71], ["ВЛК", "направлення", 52], ["ВЛК", "оскарження придатності", 47], ["Звільнення", "порядок", 43], ["Зниклі безвісти", "грошове забезпечення членам сімей", 41], ["ОГД", "сім'ям загиблих із Захистом Батьківщини", 40], ["Фінанси", "грошове забезпечення/виплати", 39], ["Проходження військової служби", "переведення в іншу частину", 38], ["Пенсійне право", "пенсія по втраті годувальника", 36], ["СЗЧ", "інше (вказати конкретно у суті звернення)", 28], ["Звільнення", "перелік документів", 27], ["СЗЧ", "добровільне повернення", 27], ["Медичні", "направлення на лікування/реабілітацію", 24], ["Фінанси", "виплати під час лікування (в тому числі додаткова винагорода)", 21], ["ЕКОПФО", "направлення", 21], ["ОГД", "при інвалідності", 20], ["Звільнення", "відмова", 19], ["Пенсійне право", "пенсія по інвалідності", 19], ["Банківське право", "кредити", 18], ["ВЛК", "порядок проходження", 17], ["Фінанси", "невиплата грошового забезпечення", 17], ["Медичні", "лікування/строки", 17], ["Житло", "Компенсація за житло: ваучер 2 млн (1176 ПКМУ УБД+ВПО)", 16], ["Виконавче провадження", "арешт рахунків", 14], ["Кримінальна справа", "інше (вказати конкретно у суті звернення)", 14], ["Звільнення", "демобілізація", 13], ["Мобілізація", "підстави для оформлення відстрочок", 12], ["ЕКОПФО", "загальні питання по процедурі", 12], ["Житло", "Компенсація за житло: 719 ПКМУ", 12], ["Банківське право", "кредитні пільги", 12], ["Судовий спір", "питання по процесу (порядок звернення до суду/порядок розгляду справ/порядок оскарження/строки тощо)", 12], ["Зниклі безвісти", "визнання загиблим/оголошення померлим", 11], ["Зниклі безвісти", "порядок дій родини", 11], ["Проходження військової служби", "переведення Армія+", 11], ["Медичні", "ненадання меддопомоги в частині", 11], ["Мобілізація", "інше (вказати конкретно у суті звернення)", 11], ["Пільги і гарантії", "виплати з місцевих бюджетів", 11], ["ТЦК та СП", "силова мобілізація військовозобов'язаних", 11], ["Контакти", "запит (вказати чиї конкретно у суті звернення)", 11], ["ВЛК", "оскарження причинового зв'язку поранення", 10], ["ВЛК", "інше (вказати конкретно у суті звернення)", 10], ["Фінанси", "розрахунок при звільненні", 10], ["Фінанси", "індексація та/або перерахунок грошового забезпечення", 10], ["СЗЧ", "поновлення на військовій службі", 10], ["Зниклі безвісти", "депоновані кошти", 10], ["Пенсійне право", "інше (вказати конкретно у суті звернення)", 10], ["Житло", "Квартирний облік: ветерани", 10], ["Статус", "УБД", 10], ["ВЛК", "відмова у направленні", 9], ["ВЛК", "неналежний огляд штатною (позаштатною) ВЛК", 9], ["СЗЧ", "грошове забезпечення", 9], ["СЗЧ", "кримінальна відповідальність", 9], ["Зниклі безвісти", "контакти для пошуку", 9], ["Проходження військової служби", "ротація", 9], ["Пенсійне право", "пенсія за вислугу років", 9], ["Мобілізація", "мобілізація без документів", 9], ["Мобілізація", "оскарження", 9], ["ЕКОПФО", "оскарження в частині групи", 9], ["Статус", "член сім'ї загиблого/померлого Захисника/Захисниці", 9], ["Адвокати", "інше (вказати конкретно у суті звернення)", 9], ["ВЛК", "оскарження причинового зв'язку захворювання", 8], ["ВЛК", "придатність до (ТЦК та СП/ВВНЗ/НЦ/заклади/медичні підрозділи логістики/зв'язку)", 8], ["Фінанси", "додаткова винагорода", 8], ["Зниклі безвісти", "процедура подання заяв", 8], ["Статус", "член сім'ї загиблого/померлого військовослужбовця", 8], ["ВЛК", "затягування видачі рішень по загиблих", 7], ["Фінанси", "матеріальна допомога для вирішення соціально-побутових питань", 7], ["Зниклі безвісти", "інше (вказати конкретно у суті звернення)", 7], ["Проходження військової служби", "виплата 1 млн", 7], ["Проходження військової служби", "інше (вказати конкретно у суті звернення)", 7], ["Медичні", "інше (вказати конкретно у суті звернення)", 7], ["Контракт", "порядок підписання", 7], ["Сімейне право", "аліменти", 7], ["ТЦК та СП", "повноваження", 7], ["Військовий облік", "взяття на військовий облік", 7], ["Цивільне право", "спадкування за законом", 7], ["ВЛК", "оскарження ПНЗ смерті внаслідок травми", 6], ["Звільнення", "неприйняття документів", 6], ["СЗЧ", "до моменту початку кримінального провадження", 6], ["СЗЧ", "затримання", 6], ["СЗЧ", "звільнення від кримінальної відповідальності", 6], ["СЗЧ", "направлення на ВЛК", 6], ["СЗЧ", "під час перебування на стаціонарному лікуванні", 6], ["Зниклі безвісти", "опіка над майном", 6], ["Проходження військової служби", "відмова у переведенні", 6], ["Пенсійне право", "дострокова пенсія за віком", 6], ["Пенсійне право", "пенсія за віком", 6], ["Мобілізація", "вручення повісток", 6], ["Мобілізація", "відстрочка порядок оформлення через ЦНАП", 6], ["Мобілізація", "осіб з відстрочкою", 6], ["Мобілізація", "перелік документів для оформлення відстрочки", 6], ["Житло", "Квартирний облік: військові", 6], ["Статус", "член сім'ї зниклих безвісти", 6], ["Пільги і гарантії", "на ЖКП", 6], ["Контракт", "інше (вказати конкретно у суті звернення)", 6], ["Сімейне право", "встановлення факту спільного проживання", 6], ["Відпустка", "за сімейними обставинами та з інших поважних причин", 6], ["Полонені", "виплати під час перебування у полоні", 6], ["Невидача документів (вказати конкретно у суті звернення)", "(без підкатегорії)", 6], ["Звільнення", "строки", 5], ["Зниклі безвісти", "ДНК", 5], ["Медичні", "зловживання щодо прийняття рішень у частині відправлення на лікування/ВЛК", 5], ["ЕКОПФО", "інше (вказати конкретно у суті звернення)", 5], ["Статус", "особа з інвалідністю внаслідок війни", 5], ["Пільги і гарантії", "отримання земельної ділянки", 5], ["Пільги і гарантії", "інше (вказати конкретно у суті звернення)", 5], ["Контракт", "18-24 ПКМУ 153", 5], ["Виконавче провадження", "по мікрозайму", 5], ["Відпустка", "щорічна основна", 5], ["Відпустка", "інше (вказати конкретно у суті звернення)", 5], ["Адміністративна відповідальність", "порушення правил військового обліку", 5], ["Замовлення пам'яток", "(без підкатегорії)", 5], ["Зразок рапорту (вказувати якого саме в другому стовпчику)", "(без підкатегорії)", 5], ["ВЛК", "оскарження ПНЗ смерті внаслідок захворювання", 4], ["Проходження військової служби", "БЗВП", 4], ["Проходження військової служби", "призначення на посаду", 4], ["Медичні", "забезпечення ліками при інфекційних захворюваннях (гепатит/ВІЛ)", 4], ["Медичні", "лікування гепатиту", 4], ["ОГД", "при звільненні", 4], ["ОГД", "інше (вказати конкретно у суті звернення)", 4], ["Сімейне право", "встановлення факту батьківства", 4], ["Сімейне право", "інше (вказати конкретно у суті звернення)", 4], ["Виконавче провадження", "інше (вказати конкретно у суті звернення)", 4], ["Відпустка", "для лікування", 4], ["Військовий облік", "виключення з військового обліку за станом здоров'я", 4], ["Військовий облік", "статуси", 4], ["Адвокати", "скарги на адвокатів або БВПД", 4], ["Полонені", "інше (вказати конкретно у суті звернення)", 4], ["Адміністративна відповідальність", "інше (вказати конкретно у суті звернення)", 4], ["Цивільне право", "спадкування за заповітом", 4], ["Нестатутні відносини", "скарги на дії командирів", 4], ["Службове розслідування", "процедура оскарження", 4], ["Трудові гарантії", "інше (вказати конкретно у суті звернення)", 4], ["Судовий збір", "інше (вказати конкретно у суті звернення)", 4], ["ВЛК", "відсутня форма 5", 3], ["ВЛК", "оскарження причинового зв'язку травми", 3], ["Звільнення", "акт перевірки сімейного стану", 3], ["Фінанси", "підйомна допомога у разі переїзду до нового місця служби", 3], ["Зниклі безвісти", "особисте розпорядження", 3], ["Проходження військової служби", "нагородження", 3], ["Проходження військової служби", "присвоєння офіцерського звання", 3], ["Пенсійне право", "пенсія по змішаному стажу", 3], ["Пенсійне право", "страховий стаж/Сплата страхових внесків", 3], ["Медичні", "ненадання меддопомоги в ЗОЗ", 3], ["Медичні", "оформлення документів по пораненню", 3], ["Мобілізація", "відмова у відстрочці після звільнення з військової служби", 3], ["Мобілізація", "розшук", 3], ["ЕКОПФО", "оскарження в частині причинового зв'язку", 3], ["Контракт", "умови проходження служби", 3], ["Сімейне право", "поділ майна подружжя", 3], ["Відпустка", "ненадання", 3], ["Військовий квиток", "відновлення", 3], ["Військовий квиток", "інше (вказати конкретно у суті звернення)", 3], ["Пільги і гарантії родинам", "військовослужбовців", 3], ["Пільги і гарантії родинам", "інше (вказати конкретно у суті звернення)", 3], ["Пільги і гарантії дітям", "(без підкатегорії)", 3], ["Антикорупційне законодавство", "можливість зайняття підприємницькою діяльністю", 3], ["Перетин кордону", "перелік документів", 3], ["Поховання загиблих (померлих)", "військовослужбовців", 3], ["ВЛК", "затягування строків розгляду або видачі рішення", 2], ["ВЛК", "оскарження в судовому порядку", 2], ["Звільнення", "інше (вказати конкретно у суті звернення)", 2], ["Фінанси", "допомога на поховання", 2], ["Фінанси", "компенсація за неотримане речове майно", 2], ["Фінанси", "інше (вказати конкретно у суті звернення)", 2], ["СЗЧ", "оскарження", 2], ["СЗЧ", "переведення в іншу частину", 2], ["Проходження військової служби", "відрядження", 2], ["Проходження військової служби", "тимчасове виконання обов'язків", 2], ["Мобілізація", "бронювання", 2], ["ОГД", "сім'ям загиблих з проходженням служби", 2], ["ОГД", "сім'ям загиблих із виконанням обов'язків служби", 2], ["ОГД", "сім'ям померлих від захворювання", 2], ["ЕКОПФО", "відмова в прийнятті документів чи проходженні", 2], ["Житло", "Є-Оселя", 2], ["Житло", "компенсація за оренду", 2], ["Житло", "інше (вказати конкретно у суті звернення)", 2], ["Статус", "інше (вказати конкретно у суті звернення)", 2], ["Банківське право", "інше (вказати конкретно у суті звернення)", 2], ["Пільги і гарантії", "додаткові пільги ОЗІВВ (незрячим/маломобільним тощо)", 2], ["Контракт", "для непридатних за станом здоров'я", 2], ["Виконавче провадження", "розблокування зарплатної картки", 2], ["ТЦК та СП", "незаконна мобілізація", 2], ["Кримінальна справа", "самогубство", 2], ["Адміністративна відповідальність", "вживання спиртних напоїв", 2], ["Цивільне право", "право власності", 2], ["Нестатутні відносини", "насильство", 2], ["Нестатутні відносини", "інше (вказати конкретно у суті звернення)", 2], ["Замовлення пам'яток", "уточнення по відправці", 2], ["Пільги і гарантії дітям", "пільгове навчання", 2], ["Рапорти", "неприйняття", 2], ["Втрата документів", "інше (вказати конкретно у суті звернення)", 2], ["Навчання", "повернення коштів за навчання у ВВНЗ", 2], ["Іноземці", "легалізація проживання", 2], ["Дисциплінарні стягнення", "оскарження", 2], ["Зразок заяви/скарги (вказувати яких саме в другому стовпчику)", "(без підкатегорії)", 2], ["ВЛК", "відмова у видачі направлення у ТЦК", 1], ["ВЛК", "відмова у направленні на ЕКОПФО", 1], ["ВЛК", "затягування видачі рішень по непридатних", 1], ["ВЛК", "оскарження тяжкості травми (поранення/контузії/каліцтва)", 1], ["ВЛК", "помилка в документах", 1], ["ВЛК", "терміни проходження ВЛК", 1], ["Фінанси", "виплати до 5 травня (24 серпня)", 1], ["Фінанси", "грошова допомога на оздоровлення", 1], ["Фінанси", "компенсація за невикористані відпустки", 1], ["СЗЧ", "отримання документів із попередніх частин", 1], ["СЗЧ", "розшук", 1], ["Проходження військової служби", "здача майна", 1], ["Проходження військової служби", "матеріальна відповідальність військовослужбовців", 1], ["Проходження військової служби", "підстави зарахування в розпорядження", 1], ["Пенсійне право", "(без підкатегорії)", 1], ["Медичні", "лікування за кордоном", 1], ["Медичні", "питання (якщо не відноситься до жодної з наявних категорій)", 1], ["Медичні", "реабілітація після поранення/травми", 1], ["Мобілізація", "направлення на навчання/підготовку/перепідготовку (резервісти/мобілізовані/офіцери запасу)", 1], ["Мобілізація", "рекрутинг (в/ч)", 1], ["ЕКОПФО", "направлення лікуючого лікаря", 1], ["Житло", "Є-Відновлення", 1], ["Житло", "Адаптація житла/Компенсація за адаптацію житла", 1], ["Житло", "Власний Дім", 1], ["Статус", "Член сім'ї загиблого", 1], ["Статус", "відмова у наданні статусу (вказати конкретно у суті звернення та додати інший із перелічених)", 1], ["Статус", "учасник війни", 1], ["Статус", "член сім'ї загиблого/померлого ветерана", 1], ["Пільги і гарантії", "автоцивілка", 1], ["Пільги і гарантії", "виплата до Дня Незалежності", 1], ["Пільги і гарантії", "компенсація за пальне", 1], ["Контракт", "60+", 1], ["Контракт", "ПКМУ № 768", 1], ["Контракт", "УДЗ", 1], ["Контракт", "умови при підписанні першого контракту", 1], ["Сімейне право", "оспорювання батьківства після смерті записаного батька дитини", 1], ["Сімейне право", "поновлення шлюбу після з'явлення особи оголошеної померлою або визнаної безвісно відсутньою", 1], ["Сімейне право", "реєстрація шлюбу (в тому числі онлайн)", 1], ["Відпустка", "додаткова (УБД/ОІВВ)", 1], ["Відпустка", "по догляду за дитиною", 1], ["ТЦК та СП", "незаконне утримання", 1], ["ТЦК та СП", "сповіщення родин загиблих/зниклих безвісти військовослужбовців", 1], ["ТЦК та СП", "інше (вказати конкретно у суті звернення)", 1], ["Військовий облік", "зняття з військового обліку", 1], ["Військовий облік", "інше (вказати конкретно у суті звернення)", 1], ["Кримінальна справа", "непокора", 1], ["Адвокати", "скарги на наших адвокатів", 1], ["Полонені", "виплати під час лікування після полону", 1], ["Полонені", "обмін", 1], ["Полонені", "отримання інформації щодо здійснених виплат під час перебування в полоні", 1], ["Полонені", "форма 55 (довідка про перебування в полоні)", 1], ["Адміністративна відповідальність", "порушення законод. про оборону", 1], ["Адміністративна відповідальність", "псування/втрата ВОД", 1], ["Військовий квиток", "втрата/знищення", 1], ["Пільги і гарантії родинам", "безвісти зниклих", 1], ["Службове розслідування", "процедура проведення", 1], ["Службове розслідування", "строки на оскарження", 1], ["Службове розслідування", "інше (вказати конкретно у суті звернення)", 1], ["Рапорти", "неповідомлення ID-номера для Армія+", 1], ["Рапорти", "строки розгляду", 1], ["Рапорти", "ігнорування", 1], ["Трудові гарантії", "додаткова відпустка без збереження заробітної плати", 1], ["Антикорупційне законодавство", "повідомлення про корупцію в підрозділі", 1], ["Перетин кордону", "інше (вказати конкретно у суті звернення)", 1], ["Поховання загиблих (померлих)", "інше (вказати конкретно у суті звернення)", 1], ["Втрата документів", "посвідчення УБД", 1], ["Навчання", "інше (вказати конкретно у суті звернення)", 1], ["Військово-обліковий документ", "оформлення", 1]];
+const TICON={"ВЛК":"steth","Звільнення":"exit","Фінанси":"wallet","СЗЧ":"alert","Зниклі безвісти":"search","Проходження військової служби":"army","Пенсійне право":"bank","Медичні":"pulse","Мобілізація":"users","ОГД":"coins","Інше":"dots","ЕКОПФО":"id","Житло":"home","Статус":"medal","Банківське право":"wallet","Пільги і гарантії":"shield","Контракт":"pen","Сімейне право":"heart","ТЦК та СП":"id"};
 const NAMES={"Фінанси":"Фінансові питання","Медичні":"Медичні питання","ОГД":"Одноразова грошова допомога","СЗЧ":"СЗЧ","Інше":"Інше, без теми"};
 const clean=s=>String(s).replace(/\s*\(вказати[^)]*\)/i,"").replace(/^\(без підкатегорії\)$/,"без уточнення").replace(/^інше$/i,"інше").replace(/^./,c=>c.toUpperCase());
 const TOP={};SUB.forEach(([c,s,n])=>{(TOP[c]=TOP[c]||{n:0,subs:[]});TOP[c].n+=n;TOP[c].subs.push([clean(s),n]);});
@@ -335,7 +339,7 @@ const TOPICS=Object.entries(TOP).map(([c,v])=>({c,name:NAMES[c]||c,n:v.n,subs:v.
 const MAX=TOPICS[0].n;let showAll=false;
 function renderTopics(){
   const list=showAll?TOPICS:TOPICS.slice(0,10);
-  $("#topics").innerHTML=list.map((t,i)=>'<div><button class="tp" aria-expanded="false" data-i="'+i+'"><span class="rk">'+(i+1)+'</span><span class="nm"><span>'+t.name+'</span><span class="track"><i style="width:'+(t.n/MAX*100).toFixed(1)+'%"></i></span></span><span class="n">'+fmt(t.n)+'</span>'+ic("chev")+'</button><div class="tp-det" hidden>'+t.subs.slice(0,8).map(s=>'<div class="sd"><div>'+s[0]+'<div class="track"><i style="width:'+(s[1]/t.subs[0][1]*100).toFixed(1)+'%"></i></div></div><b>'+s[1]+'</b></div>').join("")+(t.subs.length>8?'<div class="sd" style="color:var(--muted)">та ще '+(t.subs.length-8)+' підкатегорій</div>':"")+'</div></div>').join("");
+  $("#topics").innerHTML=list.map((t,i)=>'<div><button class="tp" aria-expanded="false" data-i="'+i+'"><span class="rk">'+(i+1)+'</span><span class="ti">'+ic(TICON[t.c]||"file")+'</span><span class="nm"><span>'+t.name+'</span><span class="track"><i style="width:'+(t.n/MAX*100).toFixed(1)+'%"></i></span></span><span class="n">'+fmt(t.n)+'</span>'+ic("chev")+'</button><div class="tp-det" hidden>'+t.subs.slice(0,8).map(s=>'<div class="sd"><div>'+s[0]+'<div class="track"><i style="width:'+(s[1]/t.subs[0][1]*100).toFixed(1)+'%"></i></div></div><b>'+s[1]+'</b></div>').join("")+(t.subs.length>8?'<div class="sd" style="color:var(--muted)">та ще '+(t.subs.length-8)+' підкатегорій</div>':"")+'</div></div>').join("");
   $("#more").innerHTML=showAll?'Показати перші 10'+ic("down").replace('class="i"','class="i" style="transform:rotate(180deg)"'):'Усі '+TOPICS.length+' тем'+ic("down");
 }
 $("#topics").addEventListener("click",e=>{const b=e.target.closest(".tp");if(!b)return;const open=b.getAttribute("aria-expanded")==="true";b.setAttribute("aria-expanded",String(!open));b.nextElementSibling.hidden=open;});
